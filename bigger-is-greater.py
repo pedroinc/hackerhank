@@ -31,11 +31,16 @@ def bigger_is_greater(word):
 
     m_suffix_index.reverse()
 
+    length_letter_values = len(letter_values)
+    length_suffix = len(m_suffix_index)
+    pivot_index = (length_letter_values - 1) - length_suffix
+    pivot_value = letter_values[pivot_index]
+
     # m_suffix_index.append(letter_values[i])
     # m_suffix_value.append(alphabet[letter_values[i]])
 
     # return m_suffix_index, m_suffix_value
-    return m_suffix_index, letter_values
+    return m_suffix_index, letter_values, pivot_index, pivot_value
 
     #identify pivot
 
