@@ -23,7 +23,7 @@ def bigger_is_greater(word):
 
     #find longest non-increasing suffix
     for i in range(len(letter_values) - 1, -1, -1):
-        if letter_values[i] > last_value:
+        if letter_values[i] >= last_value:
             m_suffix_indexes.append(letter_values[i])
             # m_suffix_value.append()
             last_value = letter_values[i]
@@ -43,20 +43,22 @@ def bigger_is_greater(word):
 
     #find rightmost sucessor to pivot in the suffix
     for i in range(len(m_suffix_indexes) - 1, -1, -1):
-        if m_suffix_indexes[i] > pivot_value:
-            rightmost_sucessor_idx = i
+        if m_suffix_indexes[i] >= pivot_value:
             rightmost_sucessor_val = m_suffix_indexes[i]
-            break
+            #last_occur_of_value
+            rightmost_sucessor_idx = (len(letter_values) - 1) - letter_values[::-1].index(rightmost_sucessor_val)
 
     #swap the pivot
 
+
     #reverse the suffix
+
 
     # m_suffix_indexes.append(letter_values[i])
     # m_suffix_value.append(alphabet[letter_values[i]])
     # return m_suffix_indexes, m_suffix_value
 
-    return m_suffix_indexes, letter_values, pivot_value, rightmost_sucessor_val
+    return m_suffix_indexes, letter_values, pivot_value, letter_values.index(rightmost_sucessor_val)
 
 
 if __name__ == "__main__":
