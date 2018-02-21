@@ -35,7 +35,12 @@ def bigger_is_greater(word):
     # identify pivot
     length_letter_values = len(letter_values)
     length_suffix = len(m_suffix_indexes)
+
     pivot_index = (length_letter_values - 1) - length_suffix
+
+    if pivot_index < 0:
+        return "no answer"
+
     pivot_value = letter_values[pivot_index]
 
     rightmost_sucessor_idx = -1
