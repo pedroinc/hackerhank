@@ -43,22 +43,30 @@ def bigger_is_greater(word):
 
     #find rightmost sucessor to pivot in the suffix
     for i in range(len(m_suffix_indexes) - 1, -1, -1):
-        if m_suffix_indexes[i] >= pivot_value:
+        if m_suffix_indexes[i] > pivot_value:
             rightmost_sucessor_val = m_suffix_indexes[i]
             #last_occur_of_value
             rightmost_sucessor_idx = (len(letter_values) - 1) - letter_values[::-1].index(rightmost_sucessor_val)
+            break
 
     #swap the pivot
-
+    new_sequence = letter_values[:]
+    new_sequence[pivot_index] = letter_values[rightmost_sucessor_idx]
+    new_sequence[rightmost_sucessor_idx] = letter_values[pivot_index]
 
     #reverse the suffix
+    sufix = new_sequence[(len(new_sequence) - len(m_suffix_indexes)) : len(new_sequence)]
+    prefix = new_sequence[0:len(new_sequence) - len(sufix)]
+    sufix.reverse()
+    new_sequence = prefix + sufix
 
+    #change numbers to letters
+    letter_sequence = ''
 
-    # m_suffix_indexes.append(letter_values[i])
-    # m_suffix_value.append(alphabet[letter_values[i]])
-    # return m_suffix_indexes, m_suffix_value
+    for number in new_sequence:
+        letter_sequence += alphabet[number]
 
-    return m_suffix_indexes, letter_values, pivot_value, letter_values.index(rightmost_sucessor_val)
+    return letter_sequence
 
 
 if __name__ == "__main__":
