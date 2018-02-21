@@ -17,51 +17,46 @@ def bigger_is_greater(word):
     if all(x == letter_values[0] for x in letter_values):
         return "no answer"
 
-    m_suffix_index = []
+    m_suffix_indexes = []
     m_suffix_value = []
     last_value = -1
 
     #find longest non-increasing suffix
     for i in range(len(letter_values) - 1, -1, -1):
         if letter_values[i] > last_value:
-            m_suffix_index.append(letter_values[i])
+            m_suffix_indexes.append(letter_values[i])
+            # m_suffix_value.append()
             last_value = letter_values[i]
         else:
             break
 
-    m_suffix_index.reverse()
+    m_suffix_indexes.reverse()
 
+    # identify pivot
     length_letter_values = len(letter_values)
-    length_suffix = len(m_suffix_index)
+    length_suffix = len(m_suffix_indexes)
     pivot_index = (length_letter_values - 1) - length_suffix
     pivot_value = letter_values[pivot_index]
 
-    # m_suffix_index.append(letter_values[i])
-    # m_suffix_value.append(alphabet[letter_values[i]])
-
-    # return m_suffix_index, m_suffix_value
-    return m_suffix_index, letter_values, pivot_index, pivot_value
-
-    #identify pivot
+    rightmost_sucessor_idx = -1
+    rightmost_sucessor_val = -1
 
     #find rightmost sucessor to pivot in the suffix
+    for i in range(len(m_suffix_indexes) - 1, -1, -1):
+        if m_suffix_indexes[i] > pivot_value:
+            rightmost_sucessor_idx = i
+            rightmost_sucessor_val = m_suffix_indexes[i]
+            break
 
     #swap the pivot
 
     #reverse the suffix
 
+    # m_suffix_indexes.append(letter_values[i])
+    # m_suffix_value.append(alphabet[letter_values[i]])
+    # return m_suffix_indexes, m_suffix_value
 
-    # possible_anagrams = ["".join(perm) for perm in itertools.permutations(word)]
-    #
-    # # sort the anagrams
-    # ordered_anagrams = sorted(possible_anagrams)
-    #
-    # # retrieve the anagram's index immediate bigger than the
-    # start_position = ordered_anagrams.index(word)
-    # new_position = start_position + 1
-    #
-    # # return the anagram
-    # return ordered_anagrams[new_position]
+    return m_suffix_indexes, letter_values, pivot_value, rightmost_sucessor_val
 
 
 if __name__ == "__main__":
