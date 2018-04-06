@@ -42,7 +42,6 @@ class TestFizzBuzz(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-
 class FizzBuzz(object):
     def __init__(self, number):
         if number <= 0:
@@ -50,10 +49,14 @@ class FizzBuzz(object):
         self.number = number
 
     def get_value(self):
-        if self.number % 3 == 0 and self.number % 5 == 0:
+        if self.is_divisible_by(3) and self.is_divisible_by(5):
             return 'FizzBuzz'
-        elif self.number % 3 == 0:
+        elif self.is_divisible_by(3):
             return 'Fizz'
-        elif self.number % 5 == 0:
+        elif self.is_divisible_by(5):
             return 'Buzz'
         return self.number
+
+
+    def is_divisible_by(self, divisor):
+        return self.number % divisor == 0
