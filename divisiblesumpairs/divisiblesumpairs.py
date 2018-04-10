@@ -1,8 +1,7 @@
 #!/bin/python3
 
-import sys
 
-class DivSumPairs():
+class DivSumPairs:
     def __init__(self, n, k, ar):
         if n < 2 or n > 100:
             raise ValueError()
@@ -13,8 +12,12 @@ class DivSumPairs():
         self._ar = ar
 
     def get_total(self):
-        return 5
-        # return self._n, self._k, self._ar
+        count = 0
+        for i in range(0, self._n):
+            for j in range(i+1, self._n):
+                if (self._ar[i] + self._ar[j]) % self._k == 0:
+                    count += 1
+        return count
 
 
 if __name__ == '__main__':
