@@ -9,6 +9,10 @@ class TestDivSumPairs(unittest.TestCase):
         with self.assertRaises(ValueError):
             DivSumPairs(n=101, k=20, ar=None)
 
+    def test_n_as_101_raises_value_error(self):
+        with self.assertRaises(ValueError):
+            DivSumPairs(n=101, k=20, ar=None)
+
     def test_n_equals_1_raises_value_error(self):
         with self.assertRaises(ValueError):
             DivSumPairs(n=1, k=10, ar=None)
